@@ -12,4 +12,6 @@
     <string name="loginButtonLoginTxt">Login</string>
     <string name="loginButtonRegisterTxt">Registro</string>
     <string name="loginTextCrearCuenta">Crear cuenta</string>
+    <string name="toastIconInformationTxt">Icono información</string>
+    <string name="toastTextViewTxt">Toast Text</string>
 </resources>

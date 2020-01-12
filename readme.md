@@ -21,7 +21,12 @@ Aplicación desarrollada con **Android Studio.**
 Todos los recursos se encuentra en un archivo en la raiz del proyecto -> **resources.7z**
 
 ## Webgrafía.
+- [shortcut android studio](https://developer.android.com/studio/intro/keyboard-shortcuts?hl=es)
 - [Change color EditText requestfocus](https://stackoverflow.com/questions/25661788/edittext-background-base-line-color-changing-based-on-its-focus-in-android)
+- [Snackbars](https://material.io/develop/android/components/snackbar/)
+- [Android Studio - Como crear un SnackBar](https://www.youtube.com/watch?v=PsJBXlWdR4Q)
+- [Snack Bar personalizado](https://riptutorial.com/es/android/example/11934/snack-bar-personalizado)
+- [Diseño Android: Notificaciones con Snackbar](https://danielme.com/2015/07/30/diseno-android-notificaciones-con-snackbar/)
 
 
 Juan Antonio Pavón Carmona.   

@@ -37,7 +37,7 @@
             app:srcCompat="@drawable/ic_logo_todo_color" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputUser"
+            android:id="@+id/contentUser"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -47,29 +47,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/splashLogo">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/loginUsuarioHint"
                 android:inputType="textEmailAddress">
 
                 <requestFocus />
-            </EditText>
+            </com.google.android.material.textfield.TextInputEditText>
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputPassWord"
+            android:id="@+id/contentPassWord"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat"
-            app:layout_constraintEnd_toEndOf="@+id/textInputUser"
-            app:layout_constraintStart_toStartOf="@id/textInputUser"
-            app:layout_constraintTop_toBottomOf="@+id/textInputUser">
+            app:layout_constraintEnd_toEndOf="@+id/contentUser"
+            app:layout_constraintStart_toStartOf="@id/contentUser"
+            app:layout_constraintTop_toBottomOf="@+id/contentUser">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputPassWord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
@@ -85,9 +87,9 @@
             android:background="@drawable/button_rounded"
             android:text="@string/loginButtonLoginTxt"
             android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="@+id/textInputPassWord"
-            app:layout_constraintStart_toStartOf="@+id/textInputPassWord"
-            app:layout_constraintTop_toBottomOf="@+id/textInputPassWord" />
+            app:layout_constraintEnd_toEndOf="@+id/contentPassWord"
+            app:layout_constraintStart_toStartOf="@+id/contentPassWord"
+            app:layout_constraintTop_toBottomOf="@+id/contentPassWord" />
 
         <Button
             android:id="@+id/buttonRegister"
@@ -96,10 +98,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_rounded_border"
-            app:layout_constraintEnd_toEndOf="@+id/textInputPassWord"
+            app:layout_constraintEnd_toEndOf="@+id/contentPassWord"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textInputPassWord"
+            app:layout_constraintStart_toStartOf="@+id/contentPassWord"
             app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
