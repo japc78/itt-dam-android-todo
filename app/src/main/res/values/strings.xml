@@ -14,4 +14,5 @@
     <string name="loginTextCrearCuenta">Crear cuenta</string>
     <string name="toastIconInformationTxt">Icono información</string>
     <string name="toastTextViewTxt">Toast Text</string>
+    <string name="menuItemAddTitle">Añadir tarea</string>
 </resources>

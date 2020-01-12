@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         // Se oculta la barra superior
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         Button btnLogin = findViewById(R.id.buttonLogin);
         Button btnRegister = findViewById(R.id.buttonRegister);
@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 txtPass.setError("Contraseña incorrecta");
                 txtPass.requestFocus();
             }
-
         }
     }
 

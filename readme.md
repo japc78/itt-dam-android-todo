@@ -27,6 +27,11 @@ Todos los recursos se encuentra en un archivo en la raiz del proyecto -> **resou
 - [Android Studio - Como crear un SnackBar](https://www.youtube.com/watch?v=PsJBXlWdR4Q)
 - [Snack Bar personalizado](https://riptutorial.com/es/android/example/11934/snack-bar-personalizado)
 - [Diseño Android: Notificaciones con Snackbar](https://danielme.com/2015/07/30/diseno-android-notificaciones-con-snackbar/)
+- [Cómo personalizar el Action Bar de tu aplicación Android](https://programacionymas.com/blog/personalizar-action-bar-android)
+- [Tutorial Sobre La Action Bar En Android](http://www.hermosaprogramacion.com/2014/09/android-action-bar/)
+- [Toolbar Custom Title and Icons Android](https://youtu.be/F9I61Fy25tQ)
+- [Add icon(logo) in app toolbar - empty activity](https://stackoverflow.com/questions/43185255/add-iconlogo-in-app-toolbar-empty-activity)
+- 
 
 
 Juan Antonio Pavón Carmona.   
