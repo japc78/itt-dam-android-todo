@@ -41,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +51,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/loginUsuarioHint"
-                android:inputType="textEmailAddress"
-                >
-                <requestFocus/>
+                android:inputType="textEmailAddress">
+
+                <requestFocus />
             </EditText>
 
 
@@ -78,8 +78,8 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            style="@style/buttons"
             android:id="@+id/buttonLogin"
+            style="@style/buttons"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_rounded"
@@ -90,8 +90,9 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputPassWord" />
 
         <Button
-            style="@style/buttons"
             android:id="@+id/buttonRegister"
+            style="@style/buttons"
+            android:text="@string/loginButtonRegisterTxt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_rounded_border"
