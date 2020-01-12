@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ToDo</string>
+    <string name="author">Juan Antonio Pavón Carmona\n ITT DAM</string>
+    <string name="buttonEndTaskTxt">Terminado</string>
+    <string name="splashBgContentDescription">Background Splash</string>
+    <string name="splashImageContentDescription">Splash Image</string>
+    <string name="splashLogoContentDescription">Splash Logo</string>
+    <string name="loginContentDescriptionImage">Login image</string>
+    <string name="loginTxtTit">LOGIN</string>
+    <string name="loginUsuarioHint">Usuario</string>
+    <string name="loginPassHint">Contraseña</string>
+    <string name="loginButtonLoginTxt">Login</string>
+    <string name="loginButtonRegisterTxt">Registro</string>
+    <string name="loginTextCrearCuenta">Crear cuenta</string>
+</resources>
