@@ -8,7 +8,7 @@
     <string name="loginContentDescriptionImage">Login image</string>
     <string name="loginTxtTit">LOGIN</string>
     <string name="loginUsuarioHint">Usuario</string>
-    <string name="loginPassHint">Contraseña</string>
+    <string name="loginPassHint">Contraseña mo</string>
     <string name="loginButtonLoginTxt">Login</string>
     <string name="loginButtonRegisterTxt">Registro</string>
     <string name="loginTextCrearCuenta">Crear cuenta</string>
