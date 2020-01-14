@@ -43,7 +43,7 @@ public class DbControler extends SQLiteOpenHelper {
     }
 
     public String[] getTasks() {
-        Log.i("App", "Pasa por getTasks");
+        // Log.i("App", "Pasa por getTasks");
         // Se abre la BD para lectura
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -85,5 +85,23 @@ public class DbControler extends SQLiteOpenHelper {
             Log.i("App", "BD vacia");
             return true;
         }
+    }
+
+    public void deleteTask(String taskName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("TASKS", "NOMBRE=?", new String[]{taskName});
+        db.close();
+    }
+
+    public void udpateTask(String taskName) {
+
+        // Se abre la BD para escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Se añade el registra  a la tarea
+        db.update("TASKS",null, "NOMBRE=?", new String[]{taskName});
+
+        // Se cierra la BD
+        db.close();
     }
 }

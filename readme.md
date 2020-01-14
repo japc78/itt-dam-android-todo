@@ -31,8 +31,12 @@ Todos los recursos se encuentra en un archivo en la raiz del proyecto -> **resou
 - [Tutorial Sobre La Action Bar En Android](http://www.hermosaprogramacion.com/2014/09/android-action-bar/)
 - [Toolbar Custom Title and Icons Android](https://youtu.be/F9I61Fy25tQ)
 - [Add icon(logo) in app toolbar - empty activity](https://stackoverflow.com/questions/43185255/add-iconlogo-in-app-toolbar-empty-activity)
-- 
-
+- [How to create a Custom Dialog box in android?](https://stackoverflow.com/questions/13341560/how-to-create-a-custom-dialog-box-in-android)
+- [Hexadecimal color code for transparency](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
+- [How to create a Custom Dialog box in android?](https://stackoverflow.com/questions/13341560/how-to-create-a-custom-dialog-box-in-android)
+- [findviewbyid returns null in a dialog](https://stackoverflow.com/questions/5525500/findviewbyid-returns-null-in-a-dialog)
+- [Qué es el ‘Inflater’ de Android. Instanciando layouts.](http://www.mhjaso.com/blog/inflater/)
+- [https://jarroba.com/inflate-en-android-inflar-y-adjuntar-views/](https://jarroba.com/inflate-en-android-inflar-y-adjuntar-views/)
 
 Juan Antonio Pavón Carmona.   
 Programación multimedia y dispositivos móviles.  
