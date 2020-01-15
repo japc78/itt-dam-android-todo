@@ -37,6 +37,10 @@ Todos los recursos se encuentra en un archivo en la raiz del proyecto -> **resou
 - [findviewbyid returns null in a dialog](https://stackoverflow.com/questions/5525500/findviewbyid-returns-null-in-a-dialog)
 - [Qué es el ‘Inflater’ de Android. Instanciando layouts.](http://www.mhjaso.com/blog/inflater/)
 - [https://jarroba.com/inflate-en-android-inflar-y-adjuntar-views/](https://jarroba.com/inflate-en-android-inflar-y-adjuntar-views/)
+- [Sqlite db update](https://stackoverflow.com/questions/10978136/sqlite-db-update)
+- [Curso de Android (Android Studio)](http://www.sgoliver.net/blog/curso-de-programacion-android/indice-de-contenidos/)
+
+
 
 Juan Antonio Pavón Carmona.   
 Programación multimedia y dispositivos móviles.  

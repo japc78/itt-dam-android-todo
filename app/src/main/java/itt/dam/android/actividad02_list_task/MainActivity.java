@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
+import itt.dam.android.actividad02_list_task.controler.AppActions;
 import itt.dam.android.actividad02_list_task.db.DbControler;
 
 public class MainActivity extends AppCompatActivity  {
@@ -25,14 +26,33 @@ public class MainActivity extends AppCompatActivity  {
     private DbControler dbControler;
     private ArrayAdapter<String> arrayAdapter;
     private ListView listViewTasks;
+    private AppActions actions;
+    private LayoutInflater inflater;
+    private View customDialogView;
+    private AlertDialog customDialog;
+    private TextView customDialogTitle;
+    private EditText customDialogTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO Revisar para sacar los metodos en la clase actions.
+        //actions =  new AppActions(this);
         dbControler = new DbControler(this);
         listViewTasks = (ListView) findViewById(R.id.listTask);
+
+        // Custom Dialog
+        // Se utiliza inflater para add el laytout del custom dialog al activity actual.
+        inflater = LayoutInflater.from(this);
+        customDialogView = inflater.inflate(R.layout.custom_alert_dialog, null);
+
+        // Se crea el instancia AlertDialog que se le pasa mediante setView el customdialog.
+        customDialog = new AlertDialog.Builder(this)
+                .setView(customDialogView)
+                .create();
+        customDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         // Se añade el toolbar y menu personalizado.
         Toolbar toolbar = findViewById(R.id.customToolBar);
@@ -75,41 +95,35 @@ public class MainActivity extends AppCompatActivity  {
         */
 
         showDialog("Nueva tarea");
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void showDialog(String s) {
-        // Custom Dialog
-        // Se utiliza inflater para add el laytout del custom dialog al activity actual.
-        LayoutInflater inflater = LayoutInflater.from(this);
-        final View customDialogView = inflater.inflate(R.layout.custom_alert_dialog, null);
-
-        // Se crea el instancia AlertDialog que se le pasa mediante setView el customdialog.
-        final AlertDialog customDialog = new AlertDialog.Builder(this)
-                .setView(customDialogView)
-                .create();
-        customDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        customDialog.show();
-
-        TextView title = customDialog.findViewById(R.id.dialogTitle);
-        title.setText(s);
-
-        // Acciones
-        final EditText boxTxt = (EditText)customDialog.findViewById(R.id.dialogBoxTxt);
 
         customDialog.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!boxTxt.getText().toString().isEmpty()) {
-                    dbControler.addTask(boxTxt.getText().toString());
+                if(!customDialogTxt.getText().toString().isEmpty()) {
+                    dbControler.addTask(customDialogTxt.getText().toString());
                     updateUI();
                     customDialog.dismiss();
                 } else {
-                    boxTxt.setError("Debes de escribir algo");
+                    customDialogTxt.setError("Debes de escribir algo");
                 }
 
             }
         });
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Muestra el cuadro de dialogo personalizado
+     *
+     * @param dialogTitle Se le pasa el titulo del cuadro de dialogo.
+     */
+    private void showDialog(String dialogTitle) {
+        customDialog.show();
+        customDialogTitle = customDialog.findViewById(R.id.dialogTitle);
+        customDialogTitle.setText(dialogTitle);
+        // Acciones
+        customDialogTxt = (EditText)customDialog.findViewById(R.id.dialogBoxTxt);
 
         customDialog.findViewById(R.id.btnCanel).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +131,7 @@ public class MainActivity extends AppCompatActivity  {
                 customDialog.dismiss();
             }
         });
+
     }
 
     private void updateUI() {
@@ -137,9 +152,24 @@ public class MainActivity extends AppCompatActivity  {
 
     public void updateTask(View view) {
         View parentButton = (View) view.getParent();
-        TextView txtTask = parentButton.findViewById(R.id.taskTxt);
-        dbControler.udpateTask(txtTask.getText().toString());
-        updateUI();
+        final TextView txtTask = parentButton.findViewById(R.id.taskTxt);
+        showDialog("Editar tarea");
+        customDialogTxt.setText(txtTask.getText().toString());
+
+        customDialog.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!customDialogTxt.getText().toString().isEmpty()) {
+                    dbControler.udpateTask(txtTask.getText().toString(), customDialogTxt.getText().toString());
+                    updateUI();
+                    customDialog.dismiss();
+                } else {
+                    customDialogTxt.setError("Debes de escribir algo");
+                }
+
+            }
+        });
+
     }
 
 }

@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
 //        getSupportActionBar().hide();
 
         // Animacion Logo
-        ImageView logo = (ImageView) findViewById(R.id.splashLogo);
+        ImageView logo = (ImageView) findViewById(R.id.registerTit);
         Animation animLogo = AnimationUtils.loadAnimation(this, R.anim.splash_logo);
         logo.startAnimation(animLogo);
         animLogo.setAnimationListener(this);

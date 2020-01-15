@@ -23,7 +23,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/splashLogo"
+            android:id="@+id/registerTit"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
@@ -45,10 +45,10 @@
             android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/splashLogo">
+            app:layout_constraintTop_toBottomOf="@+id/registerTit">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputUser"
+                android:id="@+id/registerTextInputUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/loginUsuarioHint"
@@ -70,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@+id/contentUser">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputPassWord"
+                android:id="@+id/registerTextInputPassWord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/loginPassHint"
@@ -99,6 +99,7 @@
             app:layout_constraintEnd_toEndOf="@+id/contentPassWord"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/contentPassWord"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+            android:textColor="@color/button_rouned_border_text_color"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -8,10 +8,19 @@
     <string name="loginContentDescriptionImage">Login image</string>
     <string name="loginTxtTit">LOGIN</string>
     <string name="loginUsuarioHint">Usuario</string>
-    <string name="loginPassHint">Contraseña mo</string>
+    <string name="loginPassHint">Contraseña</string>
     <string name="loginButtonLoginTxt">Login</string>
     <string name="loginButtonRegisterTxt">Registro</string>
     <string name="loginTextCrearCuenta">Crear cuenta</string>
+
+    <string name="registerContentDescriptionImage">Login image</string>
+    <string name="registerTxtTit">REGISTRO</string>
+    <string name="registerUsuarioHint">Usuario</string>
+    <string name="registerPassHint">Contraseña</string>
+    <string name="registerButtonLoginTxt">Aceptar</string>
+    <string name="registerButtonRegisterTxt">Cancelar</string>
+    <string name="registerTextCrearCuenta">Crear cuenta</string>
+
     <string name="toastIconInformationTxt">Icono información</string>
     <string name="toastTextViewTxt">Toast Text</string>
     <string name="menuItemAddTitle">Añadir tarea</string>
@@ -20,4 +29,8 @@
     <string name="dialogBtnCancelTxt">Cancelar</string>
     <string name="dialogBoxTxtHint">Escribe aquí tu nueva tarea</string>
     <string name="dialogEditTextContentDescription">Entrada de texto para la tarea</string>
+    <string name="buttonAcept">Aceptar</string>
+    <string name="buttonCancel">Cancelar</string>
+    <string name="registerRepeatPassHint">Repite la contraseña</string>
+    <string name="registerTit">REGISTRO</string>
 </resources>

@@ -24,7 +24,7 @@
     <style name="buttons">
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:fontFamily">@font/montserrat</item>
-        <item name="android:letterSpacing">.3</item>
+        <item name="android:letterSpacing">.1</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:text">@string/loginButtonRegisterTxt</item>
     </style>

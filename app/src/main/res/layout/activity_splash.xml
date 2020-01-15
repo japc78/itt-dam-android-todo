@@ -44,7 +44,7 @@
         app:srcCompat="@drawable/ic_splash_img" />
 
     <ImageView
-        android:id="@+id/splashLogo"
+        android:id="@+id/registerTit"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/splashLogoContentDescription"

@@ -14,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private TextInputEditText txtUser;
     private TextInputEditText txtPass;
@@ -46,6 +49,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //Toast.makeText(this "Funcionalidad no disponible", Toast.LENGTH_SHORT).show();
 
             toastMenssage("Funcionalidad no disponible");
+            startActivity(new Intent(this, RegisterActivity.class));
 
             /*Snack Bar personalizado
             Snackbar snackbar = Snackbar.make(v, "Funcionalidad no disponible", Snackbar.LENGTH_LONG);
@@ -57,13 +61,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else if  (v.getId() == R.id.buttonLogin) {
             Log.i("App", "Click en login");
 
-            txtUser = findViewById(R.id.textInputUser);
-            txtPass = findViewById(R.id.textInputPassWord);
+            txtUser = findViewById(R.id.registerTextInputUser);
+            txtPass = findViewById(R.id.registerTextInputPassWord);
 
             String user = txtUser.getText().toString();
             String pass = txtPass.getText().toString();
 
-/*            if (user.isEmpty()) {
+            if (user.isEmpty()) {
                 txtUser.setError("Complete el usuario");
             } else if (pass.isEmpty()) {
                 txtPass.setError("Complete la contraseña");
@@ -78,11 +82,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 //toastMenssage("Contraseña incorrecta");
                 txtPass.setError("Contraseña incorrecta");
                 txtPass.requestFocus();
-            }*/
+            }
 
-            // TODO
+            /*
+            // TODO Sin password ni user
             startActivity(new Intent(this, MainActivity.class));
             finish();
+            */
         }
     }
 
@@ -95,5 +101,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         toast.setView(layout);
         toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL,0,150);
         toast.show();
+    }
+
+
+    private final String md5(final String s) {
+        final String MD5 = "MD5";
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance(MD5);
+            digest.update(s.getBytes());
+            byte messageDigest[] = digest.digest();
+
+            // Create Hex String
+            StringBuilder hexString = new StringBuilder();
+            for (byte aMessageDigest : messageDigest) {
+                String h = Integer.toHexString(0xFF & aMessageDigest);
+                while (h.length() < 2)
+                    h = "0" + h;
+                hexString.append(h);
+            }
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
