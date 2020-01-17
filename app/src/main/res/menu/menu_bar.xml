@@ -6,8 +6,20 @@
     tools:context=".MainActivity">
 
     <item
+        android:id="@+id/menuHistory"
+        android:icon="@drawable/ic_icon_history"
+        android:title="Historial de tareas"
+        app:showAsAction="always" />
+
+    <item
     android:id="@+id/menuAddTask"
     android:icon="@drawable/ic_icon_add"
     android:title="@string/menuItemAddTitle"
     app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menuTrash"
+        android:icon="@drawable/ic_icon_trash"
+        android:title="Borrar todas las tareas del historico"
+        app:showAsAction="always" />
 </menu>

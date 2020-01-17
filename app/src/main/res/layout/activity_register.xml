@@ -112,7 +112,7 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/buttonRegister"
+                    android:id="@+id/btnCancelRegister"
                     style="@style/buttons"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                     android:layout_height="match_parent" />
 
                 <Button
-                    android:id="@+id/buttonLogin"
+                    android:id="@+id/btnAcceptRegister"
                     style="@style/buttons"
                     android:layout_width="0dp"
                     android:layout_weight="1"

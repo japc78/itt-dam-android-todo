@@ -4,44 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/listItem"
+    android:id="@+id/historyListItem"
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/taskTxt"
+        android:id="@+id/historyTaskTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnTaskEdit"
+        app:layout_constraintEnd_toStartOf="@+id/btnTaskUndo"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageButton
-        android:id="@+id/btnTaskDisable"
+        android:id="@+id/btnTaskDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="0dp"
         android:background="@null"
+        android:onClick="deleteTask"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_icon_delete" />
 
-        app:srcCompat="@drawable/ic_icon_check"
-        android:onClick="disableTask"/>
 
     <ImageButton
-        android:id="@+id/btnTaskEdit"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnTaskUndo"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@null"
+        android:onClick="undoTask"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnTaskDisable"
+        app:layout_constraintEnd_toStartOf="@+id/btnTaskDelete"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_icon_edit"
-        android:onClick="editTask"/>
+        app:srcCompat="@drawable/ic_icon_undo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

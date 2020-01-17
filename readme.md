@@ -4,7 +4,7 @@ Utilización de AnimateVectorDrawable y animaciones básicas.
 
 Las animaciones de las imágenes en SVG han sido realizadas con [shapeshifter.design](https://shapeshifter.design/) para optener los AnimateVectorDrawable.  
 
-Aplicación desarrollada con **Android Studio.**
+Aplicación desarrollada con **Android Studio.** SQLlite como gestor de BD. https://sqlitebrowser.org/dl/
 
 ![](https://drive.google.com/uc?export=view&id=1zWGhjfL7Fank9s9q58AAXKF495tu1XpZ)
 
@@ -39,6 +39,8 @@ Todos los recursos se encuentra en un archivo en la raiz del proyecto -> **resou
 - [https://jarroba.com/inflate-en-android-inflar-y-adjuntar-views/](https://jarroba.com/inflate-en-android-inflar-y-adjuntar-views/)
 - [Sqlite db update](https://stackoverflow.com/questions/10978136/sqlite-db-update)
 - [Curso de Android (Android Studio)](http://www.sgoliver.net/blog/curso-de-programacion-android/indice-de-contenidos/)
+- [Custom toast message in all screens?](https://stackoverflow.com/questions/11339980/custom-toast-message-in-all-screens)
+- 
 
 
 

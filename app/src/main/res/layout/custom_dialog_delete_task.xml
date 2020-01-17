@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/customDialog"
+    android:id="@+id/customDialogDeleteTask"
     android:layout_width="350dp"
     android:layout_height="match_parent"
     app:layout_constraintHeight_default="percent"
@@ -12,61 +12,49 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/dialogImgTitle"
+        android:id="@+id/dialogDeleteImgTitle"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:contentDescription="@string/dialogDeleteImageTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/dialogTitle"
+        app:layout_constraintTop_toTopOf="@+id/dialogDeleteTitle"
         app:srcCompat="@drawable/ic_logo_anagrama" />
 
     <TextView
-        android:id="@+id/dialogTitle"
-        android:layout_width="wrap_content"
+        android:id="@+id/dialogDeleteTitle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="4dp"
-        android:text="@string/dialogTareaTitleNueva"
+        android:layout_marginStart="8dp"
+        android:text="@string/dialogDeleteTitle"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/dialogImgTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialogDeleteImgTitle"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/dialogBoxTxt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/dialogEditTextContentDescription"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialogTitle"
-        tools:hint="@string/dialogBoxTxtHint" />
 
     <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="100dp"
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_rounded"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/dialogBtnAddTxt"
+        android:text="@string/dialogBtnDeleteTxt"
         android:textColor="@color/textColorLight"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialogBoxTxt" />
+        app:layout_constraintStart_toEndOf="@+id/btnCancelDelete"
+        app:layout_constraintTop_toBottomOf="@+id/dialogDeleteTitle" />
 
     <Button
-        android:id="@+id/btnCanel"
+        android:id="@+id/btnCancelDelete"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_rounded_border"
@@ -76,9 +64,8 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAdd"
-        app:layout_constraintEnd_toStartOf="@+id/btnAdd" />
-
-
-
+        app:layout_constraintBottom_toBottomOf="@+id/btnDelete"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

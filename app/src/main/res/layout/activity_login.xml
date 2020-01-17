@@ -48,7 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/registerTit">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registerTextInputUser"
+                android:id="@+id/loginTextInputUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/loginUsuarioHint"
@@ -70,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@+id/contentUser">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registerTextInputPassWord"
+                android:id="@+id/loginTextInputPassWord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/loginPassHint"
@@ -78,7 +78,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/btnAcceptLogin"
             style="@style/buttons"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             app:layout_constraintTop_toBottomOf="@+id/contentPassWord" />
 
         <Button
-            android:id="@+id/buttonRegister"
+            android:id="@+id/btnRegisterLogin"
             style="@style/buttons"
             android:text="@string/loginButtonRegisterTxt"
             android:layout_width="0dp"
@@ -99,7 +99,7 @@
             app:layout_constraintEnd_toEndOf="@+id/contentPassWord"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/contentPassWord"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+            app:layout_constraintTop_toBottomOf="@+id/btnAcceptLogin"
             android:textColor="@color/button_rouned_border_text_color"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

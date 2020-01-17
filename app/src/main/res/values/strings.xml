@@ -33,4 +33,8 @@
     <string name="buttonCancel">Cancelar</string>
     <string name="registerRepeatPassHint">Repite la contraseña</string>
     <string name="registerTit">REGISTRO</string>
+    <string name="dialogDeleteImageTitle">Image title</string>
+    <string name="dialogBtnDeleteTxt">Borrar</string>
+    <string name="dialogDeleteTitle">¿Eliminar todas la tareas?</string>
+    <string name="dialogAddTitleImage">Image Title Dialog</string>
 </resources>

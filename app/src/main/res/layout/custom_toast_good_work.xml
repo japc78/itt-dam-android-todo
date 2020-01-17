@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/goodWorktoastLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:padding="16dp">
+
+
+    <TextView
+        android:id="@+id/goodWorkTextViewToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="Good Work!!!"
+        android:textSize="24dp"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="@+id/goodWorkImg"
+        app:layout_constraintStart_toStartOf="@+id/goodWorkImg"
+        app:layout_constraintTop_toBottomOf="@+id/goodWorkImg" />
+
+    <ImageView
+        android:id="@+id/goodWorkImg"
+        android:layout_width="300dp"
+        android:layout_height="235dp"
+        android:contentDescription="@string/toastIconInformationTxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_img_goodwork_01" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

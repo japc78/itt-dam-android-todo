@@ -5,32 +5,37 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;;
+;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import itt.dam.android.actividad02_list_task.controler.AppMessages;
+import itt.dam.android.actividad02_list_task.db.DbControler;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private TextInputEditText txtUser;
     private TextInputEditText txtPass;
+    private DbControler dbControler;
+    private AppMessages messages;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        dbControler = new DbControler(this);
+        messages = new AppMessages(this);
+
         // Se oculta la barra superior
 //        getSupportActionBar().hide();
 
-        Button btnLogin = findViewById(R.id.buttonLogin);
-        Button btnRegister = findViewById(R.id.buttonRegister);
+        Button btnLogin = findViewById(R.id.btnRegisterLogin);
+        Button btnRegister = findViewById(R.id.btnAcceptLogin);
         // TextView tit = findViewById(R.id.loginTextViewTit);
 
         // Se le aplica un letterspacing al titulo en el Login
@@ -44,11 +49,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.buttonRegister) {
+        if (v.getId() == R.id.btnRegisterLogin) {
             // Toast sin personalizar.
             //Toast.makeText(this "Funcionalidad no disponible", Toast.LENGTH_SHORT).show();
 
-            toastMenssage("Funcionalidad no disponible");
+            // Toast personalizado sin la funcionalidad del Registro.
+            //customToast("Funcionalidad no disponible");
+
             startActivity(new Intent(this, RegisterActivity.class));
 
             /*Snack Bar personalizado
@@ -58,11 +65,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             snackbar.show();
              */
 
-        } else if  (v.getId() == R.id.buttonLogin) {
-            Log.i("App", "Click en login");
+        } else if  (v.getId() == R.id.btnAcceptLogin) {
+            Log.i("App", "Click en userLogin");
 
-            txtUser = findViewById(R.id.registerTextInputUser);
-            txtPass = findViewById(R.id.registerTextInputPassWord);
+            txtUser = findViewById(R.id.loginTextInputUser);
+            txtPass = findViewById(R.id.loginTextInputPassWord);
 
             String user = txtUser.getText().toString();
             String pass = txtPass.getText().toString();
@@ -71,28 +78,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 txtUser.setError("Complete el usuario");
             } else if (pass.isEmpty()) {
                 txtPass.setError("Complete la contraseña");
-            } else if (user.equalsIgnoreCase("itt") && pass.equalsIgnoreCase("itt")){
-                startActivity(new Intent(this, MainActivity.class));
+            } else if (dbControler.userLogin(user, pass) != null){
+                userId = dbControler.userLogin(user, pass);
+                startActivity(new Intent(this, MainActivity.class)
+                        .putExtra("userId", userId));
                 finish();
-            } else if (!user.equalsIgnoreCase("itt")){
-                //toastMenssage("Usuario incorrecto");
-                txtUser.setError("Usuario incorrecto");
-                txtUser.requestFocus();
-            } else if (!pass.equalsIgnoreCase("itt")) {
-                //toastMenssage("Contraseña incorrecta");
-                txtPass.setError("Contraseña incorrecta");
-                txtPass.requestFocus();
+            } else {
+                messages.customToast("Usuario y/o contraseña incorrecta");
             }
 
             /*
-            // TODO Sin password ni user
+            // TODO Sin password ni userId
             startActivity(new Intent(this, MainActivity.class));
             finish();
             */
         }
     }
 
-    public void toastMenssage(String texto) {
+/*
+    public void customToast(String texto) {
         Toast toast = new Toast(this);
         LayoutInflater i = getLayoutInflater();
         View layout = i.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.toastLayout));
@@ -102,6 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL,0,150);
         toast.show();
     }
+*/
 
 
     private final String md5(final String s) {

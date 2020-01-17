@@ -4,9 +4,11 @@ package itt.dam.android.actividad02_list_task;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +20,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
-import itt.dam.android.actividad02_list_task.controler.AppActions;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
+import itt.dam.android.actividad02_list_task.controler.AppMessages;
 import itt.dam.android.actividad02_list_task.db.DbControler;
 
 public class MainActivity extends AppCompatActivity  {
@@ -26,27 +31,33 @@ public class MainActivity extends AppCompatActivity  {
     private DbControler dbControler;
     private ArrayAdapter<String> arrayAdapter;
     private ListView listViewTasks;
-    private AppActions actions;
     private LayoutInflater inflater;
     private View customDialogView;
     private AlertDialog customDialog;
     private TextView customDialogTitle;
     private EditText customDialogTxt;
+    private Bundle data;
+    private String userId;
+    private AppMessages messages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TODO Revisar para sacar los metodos en la clase actions.
-        //actions =  new AppActions(this);
         dbControler = new DbControler(this);
         listViewTasks = (ListView) findViewById(R.id.listTask);
+
+        messages = new AppMessages(this);
+        data = this.getIntent().getExtras();
+        userId = data.getString("userId");
+
+        System.out.println("MainActivity: userId-" + userId);
 
         // Custom Dialog
         // Se utiliza inflater para add el laytout del custom dialog al activity actual.
         inflater = LayoutInflater.from(this);
-        customDialogView = inflater.inflate(R.layout.custom_alert_dialog, null);
+        customDialogView = inflater.inflate(R.layout.custom_dialog_add_task, null);
 
         // Se crea el instancia AlertDialog que se le pasa mediante setView el customdialog.
         customDialog = new AlertDialog.Builder(this)
@@ -58,8 +69,9 @@ public class MainActivity extends AppCompatActivity  {
         Toolbar toolbar = findViewById(R.id.customToolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        TextView toolbarTitle = toolbar.findViewById(R.id.toolbarTitle);
+        toolbarTitle.setText("TAREAS");
         toolbar.inflateMenu(R.menu.menu_bar);
-
         updateUI();
     }
 
@@ -67,6 +79,7 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_bar, menu);
+        menu.removeItem(R.id.menuTrash);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -74,7 +87,7 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Si tiene mas de una opcion en el menu recoge cual es la selecionada.
-        // AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
         //Default Dialog
         /*
@@ -94,23 +107,54 @@ public class MainActivity extends AppCompatActivity  {
         writeTask.show();
         */
 
-        showDialog("Nueva tarea");
+        switch (item.getItemId()) {
+            case R.id.menuHistory :
+                startActivity(new Intent(this, HistoryActivity.class)
+                        .putExtra("userId", userId));
+                break;
 
-        customDialog.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!customDialogTxt.getText().toString().isEmpty()) {
-                    dbControler.addTask(customDialogTxt.getText().toString());
-                    updateUI();
-                    customDialog.dismiss();
-                } else {
-                    customDialogTxt.setError("Debes de escribir algo");
-                }
+            case R.id.menuAddTask:
 
-            }
-        });
+                showDialog("Nueva tarea");
 
+                customDialog.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String task = customDialogTxt.getText().toString();
+
+                        if(!task.isEmpty()) {
+                            if (!dbControler.isTaskExist(task, userId)) {
+                                dbControler.addTask(task, userId);
+                                customDialogTxt.setText("");
+                                updateUI();
+                                customDialog.dismiss();
+                            } else {
+                                messages.customToast("Existe una tarea activa con el mismo nombre");
+                            }
+
+                        } else {
+                            customDialogTxt.setError("Debes de escribir algo");
+                        }
+
+                    }
+                });
+
+                break;
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+
+            //startActivity(new Intent(this, MainActivity.class)
+                    //.putExtra("userId", userId));
+            finish();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     /**
@@ -128,6 +172,7 @@ public class MainActivity extends AppCompatActivity  {
         customDialog.findViewById(R.id.btnCanel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                customDialogTxt.setText("");
                 customDialog.dismiss();
             }
         });
@@ -135,22 +180,56 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void updateUI() {
-        if(dbControler.isEmptyDb()) {
+        if(dbControler.isEmptyDb(userId,1)) {
             listViewTasks.setAdapter(null);
         } else {
-            arrayAdapter = new ArrayAdapter<String>(this, R.layout.item_todolist, R.id.taskTxt, dbControler.getTasks());
+            arrayAdapter = new ArrayAdapter<String>(this, R.layout.item_todolist, R.id.taskTxt, dbControler.getTasks(userId,1));
             listViewTasks.setAdapter(arrayAdapter);
         }
     }
 
-    public void deleteTask(View view) {
+    public void disableTask(View view) {
         View parentButton = (View) view.getParent();
         TextView txtTask = parentButton.findViewById(R.id.taskTxt);
-        dbControler.deleteTask(txtTask.getText().toString());
+        //dbControler.disableTask(txtTask.getText().toString(), userId);
+        dbControler.disableTask(txtTask.getText().toString(), userId);
         updateUI();
+
+        System.out.println("GOODWORK MOD: " + dbControler.goodWork(userId));
+
+        if ((dbControler.goodWork(userId)%3 == 0) && (dbControler.goodWork(userId) > 1)) {
+            String[] textgoodWork = new String[6];
+            textgoodWork[0] = "¡¡Ouhhh yeah!!";
+            textgoodWork[1] = "¡¡Magníficoo!!";
+            textgoodWork[2] = "¡¡Estupendeibolsss!!";
+            textgoodWork[3] = "¡¡Good Work!!";
+            textgoodWork[4] = "¡¡A topeeEEE!!";
+            textgoodWork[5] = "¡¡Genial, sigue así!!";
+
+            int[] img = new int[9];
+            img[0] = R.drawable.ic_img_goodwork_01;
+            img[1] = R.drawable.ic_img_goodwork_02;
+            img[2] = R.drawable.ic_img_goodwork_03;
+            img[3] = R.drawable.ic_img_goodwork_04;
+            img[4] = R.drawable.ic_img_goodwork_05;
+            img[5] = R.drawable.ic_img_goodwork_06;
+            img[6] = R.drawable.ic_img_goodwork_07;
+            img[7] = R.drawable.ic_img_goodwork_08;
+            img[8] = R.drawable.ic_img_goodwork_09;
+
+
+            messages.goodWork(textgoodWork[ramdomNum(5)], img[ramdomNum(9)]);
+        }
     }
 
-    public void updateTask(View view) {
+    private int ramdomNum(int numbers) {
+        int num = new Random().nextInt(numbers);
+
+        System.out.println("Num: " + num);
+        return num;
+    }
+
+    public void editTask(View view) {
         View parentButton = (View) view.getParent();
         final TextView txtTask = parentButton.findViewById(R.id.taskTxt);
         showDialog("Editar tarea");
@@ -160,7 +239,7 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 if(!customDialogTxt.getText().toString().isEmpty()) {
-                    dbControler.udpateTask(txtTask.getText().toString(), customDialogTxt.getText().toString());
+                    dbControler.udpateTask(txtTask.getText().toString(), customDialogTxt.getText().toString(),userId);
                     updateUI();
                     customDialog.dismiss();
                 } else {
