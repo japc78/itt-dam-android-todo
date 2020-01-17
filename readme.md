@@ -11,11 +11,11 @@ Aplicación de lista de tareas básica con registro de usuario y con histórico.
 
 Aplicación desarrollada con **Android Studio**, **`JAVA`** y **`SQLlite`**. Como gestor de BD. https://sqlitebrowser.org/dl/
 
-![Login](https://drive.google.com/uc?export=view&id=1INYpJAcIwvboAu-wAHb-WnjVUpACSrgC)
-![Registro](https://drive.google.com/uc?export=view&id=1O-ufwP3HRS-rVCRB7yv_7wFFlEVk1mvm)
-![Crear tarea](https://drive.google.com/uc?export=view&id=1-Q401eA_zsdAye6odn30GNDFviPTmgAK)
-![Finalizar tareas](https://drive.google.com/uc?export=view&id=1ma4X6P59yvYlGFv_mM-VFPz9-R-XFBJA)
-![Historico](https://drive.google.com/uc?export=view&id=1s68Pk1oRSXkwwjOtVgLDBdtQ3KGOgdvc)
+![Login](/doc/dam-android-todo-04.gif)
+![Registro](/doc/dam-android-todo-05.gif)
+![Crear tarea](/doc/dam-android-todo-01.gif)
+![Finalizar tareas](/doc/dam-android-todo-02.gif)
+![Historico](/doc/dam-android-todo-03.gif)
 
 ## Recursos
 - [FreePik](https://www.freepik.es/)
