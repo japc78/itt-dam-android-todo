@@ -16,7 +16,7 @@ Aplicación desarrollada con **Android Studio**, **`JAVA`** y **`SQLlite`**. Com
 ![Crear tarea](/doc/dam-android-todo-01.gif)
 ![Finalizar tareas](/doc/dam-android-todo-02.gif)
 ![Historico](/doc/dam-android-todo-03.gif)
-
+ 
 ## Recursos
 - [FreePik](https://www.freepik.es/)
 - [FlatIcon](https://www.flaticon.com/)
