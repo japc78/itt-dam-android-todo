@@ -91,37 +91,33 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
 
-    // Para añadirle funcionalidad a los items del menu personalizado.
+    // Para funcionalidad del Borrar todas las tarreas en la toolbar.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Si tiene mas de una opcion en el menu recoge cual es la selecionada.
-
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
+        // AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         showDialog("¿Deseas eliminar todas la tareas?");
-
         customDialog.findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dbControler.deleteTask(userId);
                 updateUI();
                 customDialog.dismiss();
+                messages.customToast("Tareas eliminadas");
             }
         });
-
         return super.onOptionsItemSelected(item);
     }
 
+    // Para al presionar en el boton atras/volver del teléfono vuelva al MainActivity
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            backMain();
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
+    public void onBackPressed() {
+        backMain();
     }
 
+    /**
+     * Metodo que vuelve al Main principal.
+     */
     private void backMain() {
         startActivity(new Intent(this, MainActivity.class)
                 .putExtra("userId", userId));
@@ -147,6 +143,9 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Actualiza la lista de tareas en el ListView.
+     */
     private void updateUI() {
         if(dbControler.isEmptyDb(userId,0)) {
             listViewTasks.setAdapter(null);
@@ -157,11 +156,15 @@ public class HistoryActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Borra una tarea. Se implementa sobre el evento onclick del item en el xml.
+     * @param view
+     */
     public void deleteTask(View view) {
         View parentButton = (View) view.getParent();
         final TextView txtTask = parentButton.findViewById(R.id.historyTaskTxt);
 
-        showDialog("¿Deseas elimina la tarea?");
+        showDialog("¿Deseas eliminar la tarea?");
 
         customDialog.findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,11 +172,16 @@ public class HistoryActivity extends AppCompatActivity {
                 dbControler.deleteTask(txtTask.getText().toString(), userId);
                 updateUI();
                 customDialog.dismiss();
+                messages.customToast("Tarea eliminada");
             }
 
         });
     }
 
+    /**
+     * Restaura una tarea. Se implementa sobre el evento onclick del item en el xml.
+     * @param view
+     */
     public void undoTask(View view){
         View parentButton = (View) view.getParent();
         final TextView txtTask = parentButton.findViewById(R.id.historyTaskTxt);
@@ -189,9 +197,8 @@ public class HistoryActivity extends AppCompatActivity {
                 dbControler.undoTaks(txtTask.getText().toString(), userId);
                 updateUI();
                 customDialog.dismiss();
+                messages.customToast("Tarea activada");
             }
-
         });
-
     }
 }

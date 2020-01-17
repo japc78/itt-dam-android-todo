@@ -15,9 +15,6 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        // Se oculta la barra superior
-//        getSupportActionBar().hide();
-
         // Animacion Logo
         ImageView logo = (ImageView) findViewById(R.id.registerTit);
         Animation animLogo = AnimationUtils.loadAnimation(this, R.anim.splash_logo);

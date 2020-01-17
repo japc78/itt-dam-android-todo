@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,12 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.appcompat.widget.Toolbar;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 import itt.dam.android.actividad02_list_task.controler.AppMessages;
 import itt.dam.android.actividad02_list_task.db.DbControler;
@@ -87,26 +82,8 @@ public class MainActivity extends AppCompatActivity  {
     // Para añadirle funcionalidad a los items del menu personalizado.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Si tiene mas de una opcion en el menu recoge cual es la selecionada.
+        // Si tiene mas de una opcion no visible en el menu recoge cual es la selecionada.
         //AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
-        //Default Dialog
-        /*
-        final EditText inputText= new EditText(this);
-        AlertDialog writeTask = new AlertDialog.Builder(this)
-                .setTitle("Nueva tarea")
-                .setView(inputText)
-                .setPositiveButton("Añadir", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dbControler.addTask(inputText.getText().toString());
-                        updateUI();
-                    }
-                })
-                .setNegativeButton("Cancelar", null)
-                .create();
-        writeTask.show();
-        */
 
         switch (item.getItemId()) {
             case R.id.menuHistory :
@@ -115,9 +92,7 @@ public class MainActivity extends AppCompatActivity  {
                 break;
 
             case R.id.menuAddTask:
-
                 showDialog("Nueva tarea");
-
                 customDialog.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -129,12 +104,16 @@ public class MainActivity extends AppCompatActivity  {
                                 customDialogTxt.setText("");
                                 updateUI();
                                 customDialog.dismiss();
+                                messages.customToast("Tarea creada");
+
                             } else if(dbControler.isTaskExist(task, userId,0)) {
                                 dbControler.udpateTask(task,userId);
                                 updateUI();
                                 customDialog.dismiss();
+                                messages.customToast("Tarea creada");
+
                             } else if (dbControler.isTaskExist(task, userId,1)) {
-                                messages.customToast("Tarea duplicadaitt");
+                                messages.customToast("Tarea duplicada");
                             }
                         } else {
                             customDialogTxt.setError("Debes de escribir algo");
@@ -148,13 +127,14 @@ public class MainActivity extends AppCompatActivity  {
         return super.onOptionsItemSelected(item);
     }
 
+    // Para al presionar en el boton atras/volver salga de la aplicación.
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
     }
 
     /**
-     * Muestra el cuadro de dialogo personalizado
+     * Muestra el cuadro de dialogo personalizado.
      *
      * @param dialogTitle Se le pasa el titulo del cuadro de dialogo.
      */
@@ -175,6 +155,9 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
+    /**
+     * Actualiza la lista de tareas en el ListView.
+     */
     private void updateUI() {
         if(dbControler.isEmptyDb(userId,1)) {
             listViewTasks.setAdapter(null);
@@ -184,6 +167,15 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+    /**
+     * Metodo para finalizar una tarea y pasar al historico. Se implementa sobre
+     * el evento onclick del item en el xml.
+     *
+     * Se crea dos arrays para mostrar mensajes de animo aleatorios.
+     * Uno para los mensajes aleatorios y otro para las imagenes.
+     *
+     * @param view
+     */
     public void disableTask(View view) {
         View parentButton = (View) view.getParent();
         TextView txtTask = parentButton.findViewById(R.id.taskTxt);
@@ -213,11 +205,18 @@ public class MainActivity extends AppCompatActivity  {
             img[7] = R.drawable.ic_img_goodwork_08;
             img[8] = R.drawable.ic_img_goodwork_09;
 
-
             messages.goodWork(textgoodWork[ramdomNum(5)], img[ramdomNum(9)]);
+        } else {
+            messages.customToast("Tarea realizada");
         }
     }
 
+    /**
+     * Metogo privado para genera numeros enteros aletatorios entre dos numeros.
+     *
+     * @param numbers
+     * @return
+     */
     private int ramdomNum(int numbers) {
         int num = new Random().nextInt(numbers);
 
@@ -225,6 +224,10 @@ public class MainActivity extends AppCompatActivity  {
         return num;
     }
 
+    /**
+     * Método para editar una tarea. Se implementa sobre el evento onclick del item en el xml.
+     * @param view
+     */
     public void editTask(View view) {
         View parentButton = (View) view.getParent();
         final TextView txtTask = parentButton.findViewById(R.id.taskTxt);
@@ -238,6 +241,8 @@ public class MainActivity extends AppCompatActivity  {
                     dbControler.udpateTask(txtTask.getText().toString(), customDialogTxt.getText().toString(),userId);
                     updateUI();
                     customDialog.dismiss();
+                    messages.customToast("Tarea editada");
+
                 } else {
                     customDialogTxt.setError("Debes de escribir algo");
                 }

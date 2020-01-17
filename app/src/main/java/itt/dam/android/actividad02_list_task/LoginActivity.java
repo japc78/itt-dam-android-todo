@@ -31,16 +31,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         dbControler = new DbControler(this);
         messages = new AppMessages(this);
 
-        // Se oculta la barra superior
-//        getSupportActionBar().hide();
-
         Button btnLogin = findViewById(R.id.btnRegisterLogin);
         Button btnRegister = findViewById(R.id.btnAcceptLogin);
-        // TextView tit = findViewById(R.id.loginTextViewTit);
-
-        // Se le aplica un letterspacing al titulo en el Login
-        // tit.setLetterSpacing(0.3f);
-
 
         // Eventos
         btnLogin.setOnClickListener(this);
@@ -50,20 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnRegisterLogin) {
-            // Toast sin personalizar.
-            //Toast.makeText(this "Funcionalidad no disponible", Toast.LENGTH_SHORT).show();
-
-            // Toast personalizado sin la funcionalidad del Registro.
-            //customToast("Funcionalidad no disponible");
-
             startActivity(new Intent(this, RegisterActivity.class));
-
-            /*Snack Bar personalizado
-            Snackbar snackbar = Snackbar.make(v, "Funcionalidad no disponible", Snackbar.LENGTH_LONG);
-            View snackBarView = snackbar.getView();
-            snackBarView.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark, getResources().newTheme()));
-            snackbar.show();
-             */
 
         } else if  (v.getId() == R.id.btnAcceptLogin) {
             Log.i("App", "Click en userLogin");
@@ -86,50 +65,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             } else {
                 messages.customToast("Usuario y/o contraseña incorrecta");
             }
-
-            /*
-            // TODO Sin password ni userId
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
-            */
         }
-    }
-
-/*
-    public void customToast(String texto) {
-        Toast toast = new Toast(this);
-        LayoutInflater i = getLayoutInflater();
-        View layout = i.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.toastLayout));
-        TextView txtMsg = layout.findViewById(R.id.textViewToast);
-        txtMsg.setText(texto);
-        toast.setView(layout);
-        toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL,0,150);
-        toast.show();
-    }
-*/
-
-
-    private final String md5(final String s) {
-        final String MD5 = "MD5";
-        try {
-            // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest.getInstance(MD5);
-            digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
-
-            // Create Hex String
-            StringBuilder hexString = new StringBuilder();
-            for (byte aMessageDigest : messageDigest) {
-                String h = Integer.toHexString(0xFF & aMessageDigest);
-                while (h.length() < 2)
-                    h = "0" + h;
-                hexString.append(h);
-            }
-            return hexString.toString();
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }
