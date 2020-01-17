@@ -17,7 +17,6 @@ Aplicación desarrollada con **Android Studio**, **`JAVA`** y **`SQLlite`**. Com
 ![Finalizar tareas](https://drive.google.com/uc?export=view&id=1ma4X6P59yvYlGFv_mM-VFPz9-R-XFBJA)
 ![Historico](https://drive.google.com/uc?export=view&id=1s68Pk1oRSXkwwjOtVgLDBdtQ3KGOgdvc)
 
-
 ## Recursos
 - [FreePik](https://www.freepik.es/)
 - [FlatIcon](https://www.flaticon.com/)
