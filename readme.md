@@ -40,7 +40,8 @@ Todos los recursos se encuentra en un archivo en la raiz del proyecto -> **resou
 - [Sqlite db update](https://stackoverflow.com/questions/10978136/sqlite-db-update)
 - [Curso de Android (Android Studio)](http://www.sgoliver.net/blog/curso-de-programacion-android/indice-de-contenidos/)
 - [Custom toast message in all screens?](https://stackoverflow.com/questions/11339980/custom-toast-message-in-all-screens)
-- 
+- [how to exit the application on back press from main activity?](https://stackoverflow.com/questions/25805147/how-to-exit-the-application-on-back-press-from-main-activity)
+
 
 
 

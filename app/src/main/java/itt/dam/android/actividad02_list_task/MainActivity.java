@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -128,10 +129,13 @@ public class MainActivity extends AppCompatActivity  {
                                 customDialogTxt.setText("");
                                 updateUI();
                                 customDialog.dismiss();
-                            } else {
-                                messages.customToast("Existe una tarea activa con el mismo nombre");
+                            } else if(dbControler.isTaskExist(task, userId,0)) {
+                                dbControler.udpateTask(task,userId);
+                                updateUI();
+                                customDialog.dismiss();
+                            } else if (dbControler.isTaskExist(task, userId,1)) {
+                                messages.customToast("Tarea duplicadaitt");
                             }
-
                         } else {
                             customDialogTxt.setError("Debes de escribir algo");
                         }
@@ -145,16 +149,8 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-
-            //startActivity(new Intent(this, MainActivity.class)
-                    //.putExtra("userId", userId));
-            finish();
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     /**

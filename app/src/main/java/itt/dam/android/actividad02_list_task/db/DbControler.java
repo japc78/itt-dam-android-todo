@@ -152,6 +152,23 @@ public class DbControler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void udpateTask(String task, String userId) {
+        //Se establece el campo a actualizar
+        ContentValues v = new ContentValues();
+
+        // Se indica el campo y el nuevo valor
+        v.put("ACTIVE", 1);
+
+        // Se abre la BD para escritura
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // Se actualiza el valor del registro al nuevo.
+        db.update("TASKS", v, "NAME=? AND USER=?", new String[]{task,userId});
+
+        // Se cierra la BD
+        db.close();
+    }
+
     public void userRegister(String user, String pass) {
         //Log.i("App", "Pasa por addTask");
         ContentValues r = new ContentValues();
@@ -200,6 +217,25 @@ public class DbControler extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery("SELECT * FROM TASKS " +
                 "WHERE NAME=? AND USER=?", args);
+
+        System.out.println("User - " + userId + ", task: " + task);
+
+        if (cursor.getCount() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isTaskExist (String task, String userId, int active) {
+        System.out.println("App: Para por isTaskExist");
+        System.out.println("User - " + userId + ", task: " + task);
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String[] args = new String[] {task, userId, String.valueOf(active)};
+
+        Cursor cursor = db.rawQuery("SELECT * FROM TASKS " +
+                "WHERE NAME=? AND USER=? AND ACTIVE=?", args);
 
         System.out.println("User - " + userId + ", task: " + task);
 
