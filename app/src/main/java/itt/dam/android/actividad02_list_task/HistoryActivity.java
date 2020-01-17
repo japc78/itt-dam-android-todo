@@ -97,6 +97,8 @@ public class HistoryActivity extends AppCompatActivity {
         // Si tiene mas de una opcion en el menu recoge cual es la selecionada.
         // AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         showDialog("¿Deseas eliminar todas la tareas?");
+        final Button btn = customDialog.findViewById(R.id.btnDelete);
+        btn.setText("Eliminar");
         customDialog.findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,6 +167,8 @@ public class HistoryActivity extends AppCompatActivity {
         final TextView txtTask = parentButton.findViewById(R.id.historyTaskTxt);
 
         showDialog("¿Deseas eliminar la tarea?");
+        final Button btn = customDialog.findViewById(R.id.btnDelete);
+        btn.setText("Eliminar");
 
         customDialog.findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity  {
 
                             } else if(dbControler.isTaskExist(task, userId,0)) {
                                 dbControler.udpateTask(task,userId);
+                                customDialogTxt.setText("");
                                 updateUI();
                                 customDialog.dismiss();
                                 messages.customToast("Tarea creada");

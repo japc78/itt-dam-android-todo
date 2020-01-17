@@ -1,22 +1,26 @@
-# App Android. Felicitación navideña..
-Felicitacón Navideña en Android. **Api23+**  
-Utilización de AnimateVectorDrawable y animaciones básicas.
+# App Android. To do. Lista de tareas.
+Aplicación de lista de tareas básica con registro de usuario y con histórico. **Api24+** .
 
-Las animaciones de las imágenes en SVG han sido realizadas con [shapeshifter.design](https://shapeshifter.design/) para optener los AnimateVectorDrawable.  
+- La aplicación permite registarse y ser utilizada por varios usuarios.
+- Cada usuario tendrá su lista de tareas.
+- Premite crear, finalizar, restaurar y borrar tareas. 
+- Se muestran mensajes de motivación cada 3 tareas finalizdas.
+- Aplicación grafica para UX. 
+- Diseño logo e iconografía.
+- Diseño personalizado e implementación de: Toast, CustomDialog y ToolBar.
 
-Aplicación desarrollada con **Android Studio.** SQLlite como gestor de BD. https://sqlitebrowser.org/dl/
+Aplicación desarrollada con **Android Studio**, **`JAVA`** y **`SQLlite`**. Como gestor de BD. https://sqlitebrowser.org/dl/
 
-![](https://drive.google.com/uc?export=view&id=1zWGhjfL7Fank9s9q58AAXKF495tu1XpZ)
+![](https://drive.google.com/uc?export=view&id=1ttunteQPngM_Y7GcqlwyaGWtOkNKEGhN)
+![](https://drive.google.com/uc?export=view&id=1rj8fTL3FpcmH6-GkwGNeAZsOXSsxG7oi)
+![](https://drive.google.com/uc?export=view&id=1-Q401eA_zsdAye6odn30GNDFviPTmgAK)
+![](https://drive.google.com/uc?export=view&id=1ma4X6P59yvYlGFv_mM-VFPz9-R-XFBJA)
+![](https://drive.google.com/uc?export=view&id=1s68Pk1oRSXkwwjOtVgLDBdtQ3KGOgdvc)
 
 
 ## Recursos
-- [GitHub, JetradarMobile/android-snowfall - Efecto Nieve](https://github.com/JetradarMobile/android-snowfall)
-- [FreePik - Papa Noel](https://www.freepik.es/vector-gratis/plana-pancartas-navidad-santa-claus-muneco-nieve_5793944.htm)
-- [FreePik - Regalos](https://www.freepik.es/vector-gratis/feliz-cumpleanos-regalos-globos_5288414.htm)
-- [FlatIcon - Logo Splash Papa Noel](https://www.flaticon.com/premium-icon/santa-claus_2345737)
-- [FlatIcon - Icon App](https://www.flaticon.com/free-icon/santa-claus_667611)
-- [Dafont - Titulo y Mensaje](https://www.dafont.com/es/snowballs.font)
-- [Musica - Christmas Hip Hop Beat (TINI MC)](https://www.youtube.com/watch?v=wsZZScXcQAU)
+- [FreePik](https://www.freepik.es/)
+- [FlatIcon](https://www.flaticon.com/)
 
 Todos los recursos se encuentra en un archivo en la raiz del proyecto -> **resources.7z**
 
@@ -41,9 +45,6 @@ Todos los recursos se encuentra en un archivo en la raiz del proyecto -> **resou
 - [Curso de Android (Android Studio)](http://www.sgoliver.net/blog/curso-de-programacion-android/indice-de-contenidos/)
 - [Custom toast message in all screens?](https://stackoverflow.com/questions/11339980/custom-toast-message-in-all-screens)
 - [how to exit the application on back press from main activity?](https://stackoverflow.com/questions/25805147/how-to-exit-the-application-on-back-press-from-main-activity)
-
-
-
 
 Juan Antonio Pavón Carmona.   
 Programación multimedia y dispositivos móviles.  
