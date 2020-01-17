@@ -11,8 +11,8 @@ Aplicación de lista de tareas básica con registro de usuario y con histórico.
 
 Aplicación desarrollada con **Android Studio**, **`JAVA`** y **`SQLlite`**. Como gestor de BD. https://sqlitebrowser.org/dl/
 
-![Login](https://drive.google.com/uc?export=view&id=1ttunteQPngM_Y7GcqlwyaGWtOkNKEGhN)
-![Registro](https://drive.google.com/uc?export=view&id=1rj8fTL3FpcmH6-GkwGNeAZsOXSsxG7oi)
+![Login](https://drive.google.com/uc?export=view&id=1INYpJAcIwvboAu-wAHb-WnjVUpACSrgC)
+![Registro](https://drive.google.com/uc?export=view&id=1O-ufwP3HRS-rVCRB7yv_7wFFlEVk1mvm)
 ![Crear tarea](https://drive.google.com/uc?export=view&id=1-Q401eA_zsdAye6odn30GNDFviPTmgAK)
 ![Finalizar tareas](https://drive.google.com/uc?export=view&id=1ma4X6P59yvYlGFv_mM-VFPz9-R-XFBJA)
 ![Historico](https://drive.google.com/uc?export=view&id=1s68Pk1oRSXkwwjOtVgLDBdtQ3KGOgdvc)
